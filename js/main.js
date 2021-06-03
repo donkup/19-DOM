@@ -54,14 +54,55 @@ surasti visus ingridientus ir kiekvienos darzoves teksta pakeisti i israuta darz
 surasti visas darzoves pakeisti i pomidoras ir priskirti kiekvienai darzovei CSS klase pomidoras
 */
 
-const liDOM = document.querySelectorAll('li')
-console.log(liDOM);
-const ingredientai = [];
+// const liDOM = document.querySelectorAll('li')
+// console.log(liDOM);
+// const ingredientai = [];
 
-for (let i = 0; i < liDOM.length; i++) {
-    liDOM[i].innerText = "POMIDORAS";
-    liDOM[i].classList.add('pomidoras');
-}
+// for (let i = 0; i < liDOM.length; i++) {
+//     liDOM[i].innerText = "POMIDORAS";
+//     liDOM[i].classList.add('pomidoras');
+// }
+
+// const logoDOM = document.querySelector('.logo');
+// const navDOM = document.querySelector('nav')
+// const hamburgerDOM = document.querySelector('.hamburger');
+
+// console.log(logoDOM);
+// console.log(hamburgerDOM);
+
+// hamburgerDOM.addEventListener('click', () => {
+//     logoDOM.classList.toggle('big');
+//     navDOM.classList.toggle('visible');
+
+// })
+let rezultatas = 0;
+
+const minusDOM = document.querySelector('.minus');
+const plusDOM = document.querySelector('.plus');
+const numberDOM = document.querySelector('.number');
+const resetDOM = document.querySelector('.reset');
+const h1DOM = document.querySelector('h1');
+
+const h1 = h1DOM.innerText;
+
+
+minusDOM.addEventListener('click', () => {
+    rezultatas = rezultatas - 1;
+    numberDOM.innerText = rezultatas;
+    h1DOM.innerText = 'Its alive 🧛‍♂️🧛‍♀️🧛‍♂️';
+})
+plusDOM.addEventListener('click', () => {
+    rezultatas = rezultatas + 1;
+    numberDOM.innerText = rezultatas;
+    h1DOM.innerText = 'Zaidimas progrese 🕵️‍♂️';
+})
+resetDOM.addEventListener('click', () => {
+    numberDOM.innerText = 0;
+    h1DOM.innerText = h1;
+})
+
+
+
 
 
 
