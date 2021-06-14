@@ -1,38 +1,38 @@
-function renderNav(selector, data) {
-    //validation
+const optionDOM = document.querySelector('.option');
+const buttonDOM = document.querySelector('button');
+const inputDOM = document.getElementById('board');
+const boardDOM = document.querySelector('.board');
 
-    //logic
-    const DOM = document.querySelector(selector);
+buttonDOM.addEventListener('click', (e) => {
+    e.preventDefault();
+    const n = parseInt(inputDOM.value);
+    optionDOM.textContent = `${n}x${n}`;
+    renderBoard(boardDOM, n);
+})
+
+function renderBoard(DOMelement, size) {
+    const elementSize = 100 / size;
+    let whiteBlackCellHTML = '';
+    let blackWhiteCellHTML = '';
     let HTML = '';
+    const whiteCellHTML = `<div class="cell" style="width: ${elementSize}%; background-color: white;"></div>`;
+    const blackCellHTML = `<div class="cell" style="width: ${elementSize}%; background-color: black;"></div>`;
 
-    for (const i in data) {
-        const menuItem = data[i];
-        HTML += `<a href="${menuItem.href}">${menuItem.title}</a>`
+    for (let c = 0; c < size; c++) {
+        if (c % 2 === 0) {
+            whiteBlackCellHTML += whiteCellHTML;
+            blackWhiteCellHTML += blackCellHTML;
+        } else {
+            whiteBlackCellHTML += blackCellHTML;
+            blackWhiteCellHTML += whiteCellHTML;
+        }
     }
 
-    //post-logic validation
+    let cellHTML = '';
+    for (let r = 0; r < size; r++) {
+        cellHTML = r % 2 === 0 ? whiteBlackCellHTML : blackWhiteCellHTML;
+        HTML += `<div class="row" style="height: ${elementSize}%;">${cellHTML}</div>`;
+    }
 
-    //result return
-    DOM.insertAdjacentHTML('beforeend', `<nav>${HTML}</nav>`);
+    DOMelement.innerHTML = HTML;
 }
-
-const menu = [
-    {
-        href: '#',
-        title: 'Home'
-    },
-    {
-        href: '#',
-        title: 'Services'
-    },
-    {
-        href: '#',
-        title: 'About us'
-    },
-    {
-        href: '#',
-        title: 'Contact us'
-    }
-];
-
-renderNav('header', menu);
