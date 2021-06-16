@@ -1,12 +1,19 @@
 function time(start, end, step) {
     const pamokuKiekis = Math.floor((end - start) * 60 / step);
     console.log(pamokuKiekis + 1);
-    for (let i = start * 60; i <= end * 60; i += step) {
+    let newEnd = end;
+    if (start > end) {
+        newEnd = 24 + end;
+
+    }
+    for (let i = start * 60; i <= newEnd * 60; i += step) {
         const h = Math.floor(i / 60);
         const m = i - (h * 60);
-        console.log(i, `${h}:${m < 10 ? '0' + m : m}`);
+        const hMod = h % 24;
+        console.log(i, `${h % 24 < 10 ? '0' + hMod : hMod}:${m < 10 ? '0' + m : m}`);
 
     }
 }
-time(8, 13, 45);
-time(1, 4, 31);
+// time(8, 13, 45);
+// time(1, 4, 31);
+time(22, 1, 45);
